@@ -181,7 +181,7 @@ class Oilfox extends Module
                 'Authorization: Bearer ' . $this->token,
                 'Content-Type: application/json',
                 'Connection: Keep-Alive',
-                'User-Agent: okhttp/3.2.0',
+                //'User-Agent: okhttp/3.2.0',
                 'Accept: */*'
             ]
         ];
