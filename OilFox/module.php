@@ -111,7 +111,7 @@ class Oilfox extends Module
 
         // get summary data
         $summary = $this->Api('summary');
-        $this->_log('OilFox', 'Summary: ' + $summary);
+        $this->_log('OilFox Summary: ', json_encode($summary));
 
         // loop each device / tank
         foreach ($summary['devices'] AS $tank) {
