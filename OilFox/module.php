@@ -171,7 +171,7 @@ class Oilfox extends Module
     public function Api(string $request)
     {
         // build url
-        $url = 'https://api.oilfox.io/v4/' . $request;
+        $url = 'https://api.oilfox.io/' . $request;
 
         // curl options
         $curlOptions = [
@@ -204,7 +204,7 @@ class Oilfox extends Module
         $this->_log('OilFox', sprintf('Logging in to oilfox account of %s...', $this->email));
 
         // login url
-        $url = 'https://api.oilfox.io/v3/login';
+        $url = 'https://api.oilfox.io/login';
 
         // curl options
         $curlOptions = [
