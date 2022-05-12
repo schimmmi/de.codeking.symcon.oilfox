@@ -116,21 +116,14 @@ class Oilfox extends Module
 
         // loop each device / tank
         foreach ($summary['items'] AS $tank) {
-            // extract values
-            $product = isset($tank['partner']['primaryProducts'][0]) ? $tank['partner']['primaryProducts'][0] : null;
-            $metering = $tank['lastMetering'];
-
             // map data
-            $this->tanks[$tank['id']] = [
+            $this->tanks[$tank['hwid']] = [
                 'Name' => $tank['name'] ? $tank['name'] : $tank['hwid'],
-                'Oil Type' => $product['name'],
-                'Volume' => (float)$tank['tank']['volume'],
-                'Tank Height' => $tank['tank']['height'],
-                'Empty Height' => $metering['value'],
-                'Filling Height' => $metering['currentOilHeight'],
-                'Current Level (L)' => (float)$metering['liters'],
-                'Current Level (%)' => (int)$metering['fillingPercentage'],
-                'Battery' => (int)$metering['battery']
+                'Days Reach' => $tank['daysReach'],
+                'Quantity Unit' => $tank['quantityUnit'],
+                'Current Level (L)' => (float)$tank['fillLevelQuantity'],
+                'Current Level (%)' => (int)$tank['fillLevelPercent'],
+                'Battery' => $tank['batteryLevel']
             ];
         }
 
