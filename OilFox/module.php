@@ -118,7 +118,7 @@ class Oilfox extends Module
         foreach ($summary['items'] AS $tank) {
             // map data
             $this->tanks[$tank['hwid']] = [
-                'Name' => $tank['name'] ? $tank['name'] : $tank['hwid'],
+                'Name' => $tank['hwid'],
                 'Days Reach' => $tank['daysReach'],
                 'Quantity Unit' => $tank['quantityUnit'],
                 'Current Level (L)' => (float)$tank['fillLevelQuantity'],
