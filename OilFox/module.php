@@ -5,15 +5,15 @@ require_once(__ROOT__ . '/libs/helpers/autoload.php');
 
 /**
  * Class Oilfox
- * Driver to OilFox API (inofficial)
- * dokumentation of the API: https://github.com/foxinsights/customer-api
+ * Driver to OilFox API
+ * Documentation of the API: https://github.com/foxinsights/customer-api
  *
  * @version     1.3
  * @category    Symcon
  * @package     de.codeking.symcon.oilfox
  * @author      Frank Herrmann <frank@herrmann.to>
- * @link        https://herrmann.to
- * @link        https://github.com/CodeKing/de.codeking.symcon.oilfox
+ * @author      Juergen Schilling <juergen_schilling@web.de>
+ * @link        https://github.com/schimmmi/de.codeking.symcon.oilfox
  *
  */
 class Oilfox extends Module
@@ -119,7 +119,10 @@ class Oilfox extends Module
             // map data
             $this->tanks[$tank['hwid']] = [
                 'Name' => $tank['hwid'],
+                'Current Metering at' => $tank['currentMeteringAt'],
+                'Next Metering at' => $tank['nextMeteringAt'],
                 'Days Reach' => $tank['daysReach'],
+                'Validation Error' => $tank['validationError'],
                 'Quantity Unit' => $tank['quantityUnit'],
                 'Current Level (L)' => (float)$tank['fillLevelQuantity'],
                 'Current Level (%)' => (int)$tank['fillLevelPercent'],
