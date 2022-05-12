@@ -6,8 +6,9 @@ require_once(__ROOT__ . '/libs/helpers/autoload.php');
 /**
  * Class Oilfox
  * Driver to OilFox API (inofficial)
+ * dokumentation of the API: https://github.com/foxinsights/customer-api
  *
- * @version     1.2
+ * @version     1.3
  * @category    Symcon
  * @package     de.codeking.symcon.oilfox
  * @author      Frank Herrmann <frank@herrmann.to>
@@ -110,11 +111,11 @@ class Oilfox extends Module
         $this->SetStatus(102);
 
         // get summary data
-        $summary = $this->Api('summary');
+        $summary = $this->Api('device');
         $this->_log('OilFox Summary: ', json_encode($summary));
 
         // loop each device / tank
-        foreach ($summary['devices'] AS $tank) {
+        foreach ($summary['items'] AS $tank) {
             // extract values
             $product = isset($tank['partner']['primaryProducts'][0]) ? $tank['partner']['primaryProducts'][0] : null;
             $metering = $tank['lastMetering'];
@@ -172,7 +173,7 @@ class Oilfox extends Module
     public function Api(string $request)
     {
         // build url
-        $url = 'https://api.oilfox.io/' . $request;
+        $url = 'https://api.oilfox.io/customer-api/v1/' . $request;
 
         // curl options
         $curlOptions = [
@@ -205,7 +206,7 @@ class Oilfox extends Module
         $this->_log('OilFox', sprintf('Logging in to oilfox account of %s...', $this->email));
 
         // login url
-        $url = 'https://api.oilfox.io/login';
+        $url = 'https://api.oilfox.io/customer-api/login';
 
         // curl options
         $curlOptions = [
@@ -219,7 +220,6 @@ class Oilfox extends Module
             CURLOPT_HTTPHEADER => [
                 'Content-Type: application/json',
                 'Connection: Keep-Alive',
-                'User-Agent: okhttp/3.2.0'
             ]
         ];
 
@@ -232,6 +232,7 @@ class Oilfox extends Module
         // extract token
         $json = json_decode($result, true);
         $this->token = isset($json['access_token']) ? $json['access_token'] : false;
+        $this->refresh_token = isset($json['refresh_token']) ? $json['refresh_token'] : false;
 
         // save valid token
         if ($this->token) {
