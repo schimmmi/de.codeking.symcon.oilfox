@@ -206,7 +206,7 @@ class Oilfox extends Module
         $this->_log('OilFox', sprintf('Logging in to oilfox account of %s...', $this->email));
 
         // login url
-        $url = 'https://api.oilfox.io/customer-api/login';
+        $url = 'https://api.oilfox.io/customer-api/v1/login';
 
         // curl options
         $curlOptions = [
