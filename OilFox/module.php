@@ -122,7 +122,6 @@ class Oilfox extends Module
                 'Current Metering at' => $tank['currentMeteringAt'],
                 'Next Metering at' => $tank['nextMeteringAt'],
                 'Days Reach' => $tank['daysReach'],
-                'Validation Error' => $tank['validationError'],
                 'Quantity Unit' => $tank['quantityUnit'],
                 'Current Level (L)' => (float)$tank['fillLevelQuantity'],
                 'Current Level (%)' => (int)$tank['fillLevelPercent'],
