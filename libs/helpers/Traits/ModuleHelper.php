@@ -417,8 +417,11 @@ trait ModuleHelper
      */
     protected function GetIdForIdentRecursive(string $Ident)
     {
-        if ($id = $this->GetIdForIdent($Ident)) {
-            return $id;
+        try {
+            if ($id = $this->GetIdForIdent($Ident)) {
+                return $id;
+            }
+        } catch (Exception $e) {
         }
 
         $object = IPS_GetObject($this->InstanceID);
