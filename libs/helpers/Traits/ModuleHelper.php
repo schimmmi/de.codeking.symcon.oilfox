@@ -419,7 +419,7 @@ trait ModuleHelper
     {
         try {
             $id = $this->GetIdForIdent($Ident)) 
-            if ($id === false) {
+            if ($id == false) {
                 throw new Exception("Objekt mit Ident $Ident wurde nicht gefunden");
             }
             return $id;
