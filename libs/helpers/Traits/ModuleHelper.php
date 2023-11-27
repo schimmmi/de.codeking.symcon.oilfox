@@ -418,9 +418,11 @@ trait ModuleHelper
     protected function GetIdForIdentRecursive(string $Ident)
     {
         try {
-            if ($id = $this->GetIdForIdent($Ident)) {
-                return $id;
+            $id = $this->GetIdForIdent($Ident)) 
+            if ($id === false) {
+                throw new Exception("Objekt mit Ident $Ident wurde nicht gefunden");
             }
+            return $id;
         } catch (Exception $e) {
         }
 
