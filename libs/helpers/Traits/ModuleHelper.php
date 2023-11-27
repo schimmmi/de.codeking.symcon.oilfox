@@ -417,9 +417,9 @@ trait ModuleHelper
      */
     protected function GetIdForIdentRecursive(string $Ident)
     {
-        if ($id = @$this->GetIdForIdent($Ident)) {
+        /*if ($id = $this->GetIdForIdent($Ident)) {
             return $id;
-        }
+        }*/
 
         $object = IPS_GetObject($this->InstanceID);
         foreach ($object['ChildrenIDs'] AS $children_id) {
