@@ -21,6 +21,7 @@ class Oilfox extends Module
     private $email;
     private $password;
     private $token;
+    private $refresh_token;
 
     public $tanks = [];
 
